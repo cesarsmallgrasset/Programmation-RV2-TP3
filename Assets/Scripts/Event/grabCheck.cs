@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class grabCheck : MonoBehaviour
 {
-    //reference to Shoot script
+    /*//reference to Shoot script
     [SerializeField] GameObject Bullet;
     Shoot shoot;
 
@@ -13,7 +13,7 @@ public class grabCheck : MonoBehaviour
     //Input Reference
     [SerializeField] private InputActionReference selectReference;
 
-    [SerializeField]AudioSource audio;
+    [SerializeField] new AudioSource audio;
     [SerializeField] AudioClip audioClip;
     
 
@@ -41,6 +41,7 @@ public class grabCheck : MonoBehaviour
 
     void OnSelect(InputAction.CallbackContext obj)
     {
+        Debug.Log("Grabbed");
         grabbed = true;
         if (colliding)
         {
@@ -50,9 +51,21 @@ public class grabCheck : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Colliding");
             colliding = true;
+        }
+    }*/
+
+    [SerializeField] private GameObject box;
+
+    void OnConfirm()
+    {
+
+
     }
 
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -6954690803614911053}
   m_Layer: 0
   m_Name: CannonShot
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e1bc66da1d01ce46a60525111d58944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.92
+  speed: 12.6
 --- !u!54 &-6954690803614911053
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -16,9 +16,11 @@ public class Target : MonoBehaviour
  
     private void OnCollisionEnter(Collision collision)
     {
-        // +1 au TargetCounter
-        Debug.Log("Hit");
-        targetCounter.Counter++;
-        Destroy(this.gameObject);
+        if (collision.gameObject.CompareTag("Bullet")){
+            // +1 au TargetCounter
+            Debug.Log("Hit");
+            targetCounter.Counter++;
+            Destroy(this.gameObject);
+        }
     }
 }

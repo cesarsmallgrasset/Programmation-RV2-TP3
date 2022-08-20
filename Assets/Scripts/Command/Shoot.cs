@@ -36,6 +36,7 @@ public class Shoot : MonoBehaviour
 
         if (isGrabbed)
         {
+            
             //Spawn la balle et fait jouer le son appropriee
             Instantiate(Bullet, Barrel.transform.position, Barrel.transform.rotation);
             audioSource.Play();

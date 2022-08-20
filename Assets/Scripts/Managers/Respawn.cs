@@ -5,14 +5,14 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
     
-    public Transform RespawnPoint;
-    public GameObject Player;
+    [SerializeField]  private Transform RespawnPoint;
+    
 
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         //Teleportes le joueur a la location du GameObject associee
-        if (collision.gameObject.CompareTag("Player")) { Player.transform.position = RespawnPoint.position; }
+        if (other.CompareTag("Player")) { other.transform.position = RespawnPoint.position; }
     }
 }

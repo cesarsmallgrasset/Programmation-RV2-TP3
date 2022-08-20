@@ -18,9 +18,12 @@ public class DoorOpen : MonoBehaviour
 
 
     //Vitesses de destruction et de la translation de la porte
-    [SerializeField] float speed;
-    [SerializeField] float DoorDestroy;
+   
+    
 
+
+    //Animator
+    [SerializeField] private Animator DoorAnim;
 
     void Awake()
     {
@@ -34,17 +37,14 @@ public class DoorOpen : MonoBehaviour
         if (targetCounter.ActivateTrigger == true)
         {
 
-            //Si les cibles ont tous ete atteintes, la porte ouvrent et jouent un son
-            transform.Translate(Vector3.left * speed * Time.deltaTime);
 
+            
+            DoorAnim.SetBool("isOpening", true);
            
             if (!alreadyPlayed) {
             audioSource.Play();
                 alreadyPlayed = true;
             }
-
-            //La porte se detruit apres x secondes
-            Destroy(this.gameObject, DoorDestroy);
         }
     } 
 }

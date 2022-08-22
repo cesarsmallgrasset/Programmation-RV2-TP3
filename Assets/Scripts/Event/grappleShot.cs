@@ -13,13 +13,13 @@ public class grappleShot : MonoBehaviour
 
     //Joint related
     FixedJoint joint;
-    grappleGun _grappleGun;
+    CustomPlayerController _grappleGun;
     [SerializeField] GameObject grappleGunReference;
 
     private void Start()
     {
         grappleOutReference.action.performed += OnGrappleExit;
-        _grappleGun = grappleGunReference.GetComponent<grappleGun>();
+        _grappleGun = grappleGunReference.GetComponent<CustomPlayerController>();
         _collider = GetComponent<Collider>();
     }
 

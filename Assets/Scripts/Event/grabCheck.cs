@@ -7,20 +7,20 @@ public class grabCheck : MonoBehaviour
 {
     [SerializeField] GameObject Shootreference, Ammopack;
     [SerializeField] AudioSource audioSource;
-    Shoot shoot;
+    CustomPlayerController shoot;
     private bool alreadyPlayed = false;
 
 
 
     void Awake()
     {
-        shoot = Shootreference.GetComponent<Shoot>();
+        shoot = Shootreference.GetComponent<CustomPlayerController>();
        
     }
 
     private void Update()
     {
-        shoot.isGrabbed = true;
+        shoot.cannonIsGrabbed = true;
         if (!alreadyPlayed)
         {
             audioSource.Play();

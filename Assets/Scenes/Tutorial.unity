@@ -12620,7 +12620,6 @@ GameObject:
   - component: {fileID: 240190180}
   - component: {fileID: 240190178}
   - component: {fileID: 240190179}
-  - component: {fileID: 240190182}
   - component: {fileID: 240190181}
   m_Layer: 0
   m_Name: XR Interaction Manager
@@ -12679,35 +12678,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 240190177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a56bfe0ba353f4948af071f07bb7a289, type: 3}
+  m_Script: {fileID: 11500000, guid: 91ae34b6f4905624e89c7cbf6af8b2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shootReference: {fileID: -1982958826193246883, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  Bullet: {fileID: 5997112199504513498, guid: a96b31bca665de546be81db1fb8b6788, type: 3}
-  Barrel: {fileID: 148782262}
-  audioSource: {fileID: 338404040}
---- !u!114 &240190182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240190177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6f1536f6f89a4a4583a2e03092966f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grappleReference: {fileID: -6688878184781587620, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   grappleOutReference: {fileID: 681355895611295256, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  grappleReference: {fileID: -6688878184781587620, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  cannonAudioSource: {fileID: 338404040}
   Player: {fileID: 500382732}
   Bullet: {fileID: 988634218}
   Barrel: {fileID: 1717878935}
-  BulletSpeed: 100
+  CannonBullet: {fileID: 5997112199504513498, guid: a96b31bca665de546be81db1fb8b6788, type: 3}
+  CannonBarrel: {fileID: 148782262}
+  BulletSpeed: 25
   MinDistance: 0.1
-  MaxDistance: 0.5
+  MaxDistance: 0.9
   Damper: 100
-  Spring: 84.76
+  Spring: 300
 --- !u!108 &252908443 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 9082934304837855344, guid: 7e5d0f274ebd71142b9b847997b3907d, type: 3}
@@ -13013,7 +13000,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh133508
+  m_Name: pb_Mesh26466
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13534,7 +13521,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh133606
+  m_Name: pb_Mesh26564
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14792,7 +14779,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh133054
+  m_Name: pb_Mesh26010
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

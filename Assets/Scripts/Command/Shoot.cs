@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class Shoot : MonoBehaviour
 {
 
-    internal bool isGrabbed = false;
+    internal bool cannonIsGrabbed = false;
 
 
     //Fait reference au action map pour la gachette ("Shoot")
@@ -18,8 +18,8 @@ public class Shoot : MonoBehaviour
 
     //Tous les items en liens avec le tir de la balle
     [SerializeField]
-    private GameObject Bullet, Barrel;
-    [SerializeField] AudioSource audioSource;
+    private GameObject CannonBullet, CannonBarrel;
+    [SerializeField] AudioSource cannonAudioSource;
 
 
    
@@ -34,12 +34,12 @@ public class Shoot : MonoBehaviour
 
     void OnShoot(InputAction.CallbackContext obj) {
 
-        if (isGrabbed)
+        if (cannonIsGrabbed)
         {
             
             //Spawn la balle et fait jouer le son appropriee
-            Instantiate(Bullet, Barrel.transform.position, Barrel.transform.rotation);
-            audioSource.Play();
+            Instantiate(CannonBullet, CannonBarrel.transform.position, CannonBarrel.transform.rotation);
+            cannonAudioSource.Play();
         }
         else
         {

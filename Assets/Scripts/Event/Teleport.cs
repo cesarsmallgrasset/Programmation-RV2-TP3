@@ -2,34 +2,29 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
-    [SerializeField] private Transform firstDestination, secondDestination;
+    [SerializeField] private Transform Destination, Destination2;
     [SerializeField] private new AudioSource audio;
-
-    internal bool _firstDestination = true, _secondDestination = false;
-   
+    private Transform teleport;
+    [SerializeField] private bool canTeleport;
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            if (_firstDestination)
+            if (canTeleport)
             {
-                other.transform.position = firstDestination.transform.position;
-                other.transform.rotation = firstDestination.transform.rotation;
+                Debug.Log("Teleport1");
+                other.transform.position = Destination.transform.position;
                 audio.Play();
-                _firstDestination = false;
-                _secondDestination = true;
+                canTeleport = false;
             }
-            else if (_secondDestination)
+            if (!canTeleport)
             {
-
-                _firstDestination = true;
-                _secondDestination = false;
-
-                other.transform.position = secondDestination.transform.position;
-                other.transform.rotation = secondDestination.transform.rotation;
-
+                Debug.Log("Teleport2");
+                Destination.transform.position = Destination2.transform.position;
+                audio.Play();
+                canTeleport = true;
             }
         }
     }

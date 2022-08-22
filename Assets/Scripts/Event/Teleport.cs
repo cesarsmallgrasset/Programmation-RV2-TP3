@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
-    [SerializeField] private Transform Destination;
-
+    [SerializeField] private Transform firstDestination, secondDestination;
     [SerializeField] private new AudioSource audio;
 
-    
+    internal bool _firstDestination = true, _secondDestination = false;
    
 
 
@@ -14,9 +13,24 @@ public class Teleport : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-                other.transform.position = Destination.transform.position;
-                other.transform.rotation = Destination.transform.rotation;
+            if (_firstDestination)
+            {
+                other.transform.position = firstDestination.transform.position;
+                other.transform.rotation = firstDestination.transform.rotation;
                 audio.Play();
+                _firstDestination = false;
+                _secondDestination = true;
+            }
+            else if (_secondDestination)
+            {
+
+                _firstDestination = true;
+                _secondDestination = false;
+
+                other.transform.position = secondDestination.transform.position;
+                other.transform.rotation = secondDestination.transform.rotation;
+
+            }
         }
     }
 }

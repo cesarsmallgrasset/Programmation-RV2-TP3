@@ -1,21 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
+    [SerializeField] private Transform Destination;
 
-    public Transform Receiver;
-    public GameObject Player;
+    [SerializeField] private new AudioSource audio;
 
-    [SerializeField] AudioSource audioSource;
+    
+   
 
 
-
-        private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        //Teleporte le joueur a la location du GameObject associee et fait jouer un son
-        if (collision.gameObject.CompareTag("Player")) {Player.transform.position = Receiver.position;}
-        audioSource.Play();
+        if(other.CompareTag("Player"))
+        {
+                other.transform.position = Destination.transform.position;
+                other.transform.rotation = Destination.transform.rotation;
+                audio.Play();
+        }
     }
 }
+
+  

@@ -5,54 +5,27 @@ using UnityEngine.InputSystem;
 
 public class grabCheck : MonoBehaviour
 {
-    //reference to Shoot script
-    [SerializeField] GameObject Bullet;
+    [SerializeField] GameObject Shootreference, Ammopack;
+    [SerializeField] AudioSource audioSource;
     Shoot shoot;
+    private bool alreadyPlayed = false;
 
 
-    //Input Reference
-    [SerializeField] private InputActionReference selectReference;
 
-    [SerializeField]AudioSource audio;
-    [SerializeField] AudioClip audioClip;
-    
-
-    //to check if the player is in the area and grabbing the bullet pack
-    bool grabbed = false;
-    bool colliding = false;
     void Awake()
     {
-        shoot = Bullet.GetComponent<Shoot>();
-        selectReference.action.performed += OnSelect;
+        shoot = Shootreference.GetComponent<Shoot>();
+       
     }
 
-
-    void Update()
+    private void Update()
     {
-        if (grabbed && colliding)
+        shoot.isGrabbed = true;
+        if (!alreadyPlayed)
         {
-            shoot.isGrabbed = true;
-
-            Destroy(this.gameObject, 1f);
+            audioSource.Play();
+            alreadyPlayed = true;
         }
-
+        Destroy(Ammopack, 2f);
     }
-
-
-    void OnSelect(InputAction.CallbackContext obj)
-    {
-        grabbed = true;
-        if (colliding)
-        {
-            audio.Play();
-
-        }
-    }
-
-
-    private void OnTriggerEnter(Collider collision)
-    {
-            colliding = true;
-    }
-
 }

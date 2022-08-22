@@ -14,11 +14,13 @@ public class Target : MonoBehaviour
         targetCounter = HolderReference.GetComponent<TargetCounter>();
     }
  
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        // +1 au TargetCounter
-        Debug.Log("Hit");
-        targetCounter.Counter++;
-        Destroy(this.gameObject);
+        if (collision.CompareTag("Bullet")){
+            // +1 au TargetCounter
+            Debug.Log("Hit");
+            targetCounter.Counter++;
+            Destroy(this.gameObject);
+        }
     }
 }

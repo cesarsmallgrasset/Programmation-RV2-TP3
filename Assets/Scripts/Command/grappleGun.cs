@@ -20,7 +20,7 @@ public class grappleGun : MonoBehaviour
 
     //Instances of the shots
     grappleShot _grappleShot;
-    private bool Shot;
+    internal bool Shot;
 
     //Bullet rigidbody
     private Rigidbody Bulletrb;
@@ -29,7 +29,6 @@ public class grappleGun : MonoBehaviour
     SpringJoint springJoint;
     [SerializeField] private float BulletSpeed = 5f, MinDistance = 0.1f, MaxDistance = 0.9f, Damper = 100f, Spring = 300f;
 
-
     private void Start()
     {
         //References
@@ -37,7 +36,7 @@ public class grappleGun : MonoBehaviour
         grappleOutReference.action.performed += OnGrappleExit;
         _grappleShot = Bullet.GetComponent<grappleShot>();
 
-        //Bullet Rigidbody
+        //Bullet
         Bulletrb = Bullet.GetComponent<Rigidbody>();
 
         //Player
@@ -60,10 +59,10 @@ public class grappleGun : MonoBehaviour
         Shot = true;
         Debug.Log("In");
 
-
+        
         Bullet.transform.position = Barrel.transform.position;
-
         Bulletrb.velocity = Barrel.transform.forward * BulletSpeed;
+
     }
 
     void OnGrappleExit(InputAction.CallbackContext obj2)

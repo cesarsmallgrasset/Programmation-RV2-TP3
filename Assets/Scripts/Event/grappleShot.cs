@@ -8,7 +8,7 @@ public class grappleShot : MonoBehaviour
     //Parameters
     [SerializeField] private InputActionReference grappleOutReference;
     internal GameObject collisionObject;
-
+    Collider _collider;
 
 
     //Joint related
@@ -20,9 +20,16 @@ public class grappleShot : MonoBehaviour
     {
         grappleOutReference.action.performed += OnGrappleExit;
         _grappleGun = grappleGunReference.GetComponent<grappleGun>();
+        _collider = GetComponent<Collider>();
     }
 
+    private void Update()
+    {
+        if (_grappleGun.Shot) {
+            _collider.enabled = !_collider.enabled;
 
+                }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Grappleable")

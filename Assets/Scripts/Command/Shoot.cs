@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class Shoot : MonoBehaviour
 {
 
-    internal bool isGrabbed = true;
+    internal bool isGrabbed = false;
 
 
     //Fait reference au action map pour la gachette ("Shoot")
@@ -36,6 +36,7 @@ public class Shoot : MonoBehaviour
 
         if (isGrabbed)
         {
+            
             //Spawn la balle et fait jouer le son appropriee
             Instantiate(Bullet, Barrel.transform.position, Barrel.transform.rotation);
             audioSource.Play();

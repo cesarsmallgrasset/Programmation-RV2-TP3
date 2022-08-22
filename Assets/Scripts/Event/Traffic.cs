@@ -14,7 +14,7 @@ public class Traffic : MonoBehaviour
 
 
     //Le renderer sert a aller modifier la couleur du feu / stop light
-    [SerializeField] public Renderer renderer;
+    [SerializeField] public new Renderer renderer;
 
 
     void Awake()

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class Shoot : MonoBehaviour
 {
 
-    internal bool isGrabbed = true;
+    internal bool isGrabbed = false;
 
 
     //Fait reference au action map pour la gachette ("Shoot")

@@ -9,6 +9,9 @@ public class CustomPlayerController : MonoBehaviour
     //Action Map References
     [SerializeField] private InputActionReference shootReference, grappleOutReference, grappleReference, jumpReference;
 
+    GroundCheck groundcheck;
+
+
     //Audio
     [SerializeField] private AudioSource cannonAudioSource;
 
@@ -22,30 +25,27 @@ public class CustomPlayerController : MonoBehaviour
     //Variables
     [SerializeField] private float jumpForce = 500f, BulletSpeed = 5f, MinDistance = 0.1f, MaxDistance = 0.9f, Damper = 100f, Spring = 300f;
     internal bool Shot, cannonIsGrabbed = false;
-        internal bool isGrounded => Physics.Raycast( new Vector2(transform.position.x, transform.position.y + 2.5f), Vector3.down, 2.5f);
 
 
     private void Start()
     {
-        PlayerRb = Player.GetComponent<Rigidbody>();
-        jumpReference.action.performed += OnJump;
-
 
         //fait appel au action map "Shoot" et le stock dans cette variable
         shootReference.action.performed += OnShoot;
 
+        //Player
+        groundcheck = Player.GetComponent<GroundCheck>();
+        PlayerRb = Player.GetComponent<Rigidbody>();
+        jumpReference.action.performed += OnJump;
+        playerTransform = Player.transform;
 
-        //_________________________________________________
-        //References
+        //ActionMap
         grappleReference.action.performed += OnGrappleEnter;
         grappleOutReference.action.performed += OnGrappleExit;
-        _grappleShot = Bullet.GetComponent<grappleShot>();
 
         //Bullet
         Bulletrb = Bullet.GetComponent<Rigidbody>();
-
-        //Player
-        playerTransform = Player.transform;
+        _grappleShot = Bullet.GetComponent<grappleShot>();
 
     }
 
@@ -111,10 +111,14 @@ public class CustomPlayerController : MonoBehaviour
         springJoint.spring = Spring;
     }
 
+
+
     private void OnJump(InputAction.CallbackContext obj)
     {
-        if (isGrounded)
+        Debug.Log("Jump");
+        if (groundcheck.isGrounded)
         {
+            Debug.Log("Grounded");
             PlayerRb.AddForce(Vector3.up * jumpForce);
         }
     }

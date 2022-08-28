@@ -9,15 +9,11 @@ public class grabCheck : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     CustomPlayerController shoot;
     private bool alreadyPlayed = false;
-
-
-
     void Awake()
     {
         shoot = Shootreference.GetComponent<CustomPlayerController>();
        
     }
-
     private void Update()
     {
         shoot.cannonIsGrabbed = true;

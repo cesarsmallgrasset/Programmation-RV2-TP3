@@ -13,32 +13,32 @@ public class grappleShot : MonoBehaviour
 
     //Joint related
     FixedJoint joint;
-    CustomPlayerController _grappleGun;
-    [SerializeField] GameObject grappleGunReference;
+    CustomPlayerController playercontroller;
+    [SerializeField] GameObject PlayerReference;
 
     private void Start()
     {
         grappleOutReference.action.performed += OnGrappleExit;
-        _grappleGun = grappleGunReference.GetComponent<CustomPlayerController>();
+        playercontroller = PlayerReference.GetComponent<CustomPlayerController>();
         _collider = GetComponent<Collider>();
     }
 
     private void Update()
     {
-        if (_grappleGun.Shot) {
+        if (playercontroller.Shot) {
             _collider.enabled = !_collider.enabled;
-
                 }
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Grappleable")
         {
+            Debug.Log("Hooked");
             collisionObject = collision.gameObject;
             joint = gameObject.AddComponent<FixedJoint>();
             joint.connectedBody = collisionObject.GetComponent<Rigidbody>();
 
-            _grappleGun.Swing();
+            playercontroller.Swing();
         }
     }
 

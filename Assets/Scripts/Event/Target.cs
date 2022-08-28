@@ -14,9 +14,9 @@ public class Target : MonoBehaviour
         targetCounter = HolderReference.GetComponent<TargetCounter>();
     }
  
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.CompareTag("Bullet")){
+        if (other.CompareTag("Bullet")){
             // +1 au TargetCounter
             Debug.Log("Hit");
             targetCounter.Counter++;

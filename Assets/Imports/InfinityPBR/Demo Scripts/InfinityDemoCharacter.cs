@@ -43,11 +43,7 @@ namespace InfinityPBR.Demo
 
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow)) SetAnimation(_animationTriggerIndex += 1);
-            if (Input.GetKeyDown(KeyCode.LeftArrow)) SetAnimation(_animationTriggerIndex -= 1);
-            if (Input.GetKeyDown(KeyCode.Space)) TriggerAnimation();
-            if (Input.GetKeyDown(superRandomKey) && !ShiftIsDown()) superRandomButton.onClick.Invoke();
-            if (Input.GetKeyDown(superRandomKey) && ShiftIsDown()) resetButton.onClick.Invoke();
+
         }
         
         private void SetAnimation(int newIndex, bool trigger = true)
